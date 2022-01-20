@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+import React, { useState }from "react";
+import BabyNamesList from "./BabyNamesList.js";
+import BabyNames from "./data/babyNames.json";
 import './App.css';
 
 function App() {
+  const [babyNames, setBabyNames] = useState(BabyNames.sort((a, b) => a.name.localeCompare(b.name)));
+
+  function searchBabyNames(nameText){
+  setBabyNames(BabyNames.filter(v => v.name.toLowerCase().includes(nameText)))
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="card border border-info">
+      <form>
+        <input
+          onKeyUp={(e) => searchBabyNames(e.currentTarget.value.toLowerCase())}
+          type="search"
+          placeholder="Search for name ..."
+          aria-label="Search"
+        />
+        <i className="fa fa-female text-danger"></i>
+        <i className="fa fa-male text-info"></i>
+        <i className="fa fa-child text-success"></i>
+      </form>
+      <BabyNamesList data={babyNames} />
+      <hr />
     </div>
   );
 }
