@@ -11,7 +11,7 @@ function App() {
   }
 
   return (
-    <div className="card border border-info">
+    <div className=" form-wrap card border border-info">
       <form>
         <input
           onKeyUp={(e) => searchBabyNames(e.currentTarget.value.toLowerCase())}

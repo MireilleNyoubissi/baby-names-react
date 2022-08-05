@@ -3,32 +3,36 @@ import React, { useState } from "react";
 
 function BabyNamesList(props){
   
-  const [babyName, setBabyName] = useState("");
+  // const [babyName, setBabyName] = useState("");
   
-  const [addFavorite, setAddFavorite] = useState([]);
+  const [favorites, setFavorites] = useState([]);
 
-  const add = (e) => {
-    setAddFavorite([addFavorite].concat([babyName]));
+  const addFavorites = (babyName) => {
+    
+    setFavorites(favorites.concat([babyName + ""]));
   }
+
+ 
 
     return (
       <>
-        <ul>
+      
+        <div className="div-wrap">
+          <h4>Favorites: </h4>
           <p>
-            Favorites:
-            {addFavorite.map((v, i) => (
-              <li key={i}>{babyName}</li>
-            ))}
             
+            {favorites.map((favorite, i) => (
+              <li key={i}>{favorite + ","}</li>
+            ))}
           </p>
-        </ul>
+        </div>
         <hr />
         <ul>
           {props.data.map((babyName, index) => (
             <>
               {babyName.sex === 'm' ? (
                 <li
-                  onClick={(e) => add(setBabyName(babyName.name))}
+                  onClick={(e) => addFavorites(babyName.name)}
                   className="genderFormatBoy"
                   key={babyName.id}
                 >
@@ -36,7 +40,7 @@ function BabyNamesList(props){
                 </li>
               ) : (
                 <li
-                  onClick={(e) => add(setBabyName(babyName.name))}
+                  onClick={(e) => addFavorites(babyName.name)}
                   className="genderFormatGirl"
                   key={babyName.id}
                 >
