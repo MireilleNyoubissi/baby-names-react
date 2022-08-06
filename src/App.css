@@ -3,7 +3,7 @@
   font-size: 16px;
 }
 
-div{  
+.form-wrap {  
   width: 80%;
   min-height: 70vh;
   margin: 4rem auto 0 auto;
@@ -22,8 +22,15 @@ input {
 }
 
 p{
+  display: inline-flex;
+  flex-wrap: wrap;
   padding-top: 3rem;
   margin-left: 1rem;
+  margin-bottom: 0 ;
+}
+
+h4 {
+  margin-left: 3rem;
 }
 
 ul {
@@ -31,7 +38,33 @@ ul {
   flex-wrap: wrap;
 }
 
+.div-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 li {
   list-style: none;
   padding: 10px;
+  margin: 6px;
+}
+
+.genderFormatBoy{
+  color: #00008B;
+  background-color: rgb(204, 231, 255);
+  border-radius: 6px;
+}
+
+.genderFormatGirl {
+  color: #8B008B;
+  background-color: #FFB6C1;
+  border-radius: 6px;
+}
+
+hr {
+  display: flex;
+  width: 80%;
+  margin-bottom: 1rem;
+  align-self: center;
+  border-width: thick;
 }
